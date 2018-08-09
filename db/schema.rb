@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809202816) do
+ActiveRecord::Schema.define(version: 20180809204559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20180809202816) do
   end
 
   add_index "atrativos", ["pj_id"], name: "index_atrativos_on_pj_id", using: :btree
+
+  create_table "entradas", force: :cascade do |t|
+    t.string   "tipo"
+    t.date     "data"
+    t.integer  "atrativo_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "entradas", ["atrativo_id"], name: "index_entradas_on_atrativo_id", using: :btree
 
   create_table "funcionarios", force: :cascade do |t|
     t.string   "cpf",        limit: 11, null: false
@@ -57,5 +67,6 @@ ActiveRecord::Schema.define(version: 20180809202816) do
   end
 
   add_foreign_key "atrativos", "pjs"
+  add_foreign_key "entradas", "atrativos"
   add_foreign_key "funcionarios", "pjs"
 end
