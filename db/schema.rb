@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809195732) do
+ActiveRecord::Schema.define(version: 20180809201008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "funcionarios", force: :cascade do |t|
+    t.string   "cpf",        limit: 11, null: false
+    t.string   "nome"
+    t.string   "cargo"
+    t.string   "email"
+    t.string   "senha"
+    t.integer  "pj_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "funcionarios", ["pj_id"], name: "index_funcionarios_on_pj_id", using: :btree
 
   create_table "pjs", force: :cascade do |t|
     t.string   "cnpj",          limit: 14, null: false
@@ -26,4 +39,5 @@ ActiveRecord::Schema.define(version: 20180809195732) do
     t.datetime "updated_at",               null: false
   end
 
+  add_foreign_key "funcionarios", "pjs"
 end
