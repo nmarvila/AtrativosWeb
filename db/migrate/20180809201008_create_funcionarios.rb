@@ -6,6 +6,7 @@ class CreateFuncionarios < ActiveRecord::Migration
       t.string :cargo
       t.string :email
       t.string :senha
+      t.boolean :esta_ativa
       t.references :pj, index: true, foreign_key: true
 
       t.timestamps null: false

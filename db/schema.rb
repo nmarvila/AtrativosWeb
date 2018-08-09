@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809201008) do
+ActiveRecord::Schema.define(version: 20180809202816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "atrativos", force: :cascade do |t|
+    t.string   "nome"
+    t.string   "endereco"
+    t.string   "duracao"
+    t.integer  "capacidade"
+    t.string   "imagem"
+    t.float    "ingresso_crianca"
+    t.float    "ingresso_adulto"
+    t.integer  "pj_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "atrativos", ["pj_id"], name: "index_atrativos_on_pj_id", using: :btree
 
   create_table "funcionarios", force: :cascade do |t|
     t.string   "cpf",        limit: 11, null: false
@@ -22,6 +37,7 @@ ActiveRecord::Schema.define(version: 20180809201008) do
     t.string   "cargo"
     t.string   "email"
     t.string   "senha"
+    t.boolean  "esta_ativa"
     t.integer  "pj_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
@@ -35,9 +51,11 @@ ActiveRecord::Schema.define(version: 20180809201008) do
     t.string   "nome_fantasia"
     t.string   "email"
     t.string   "senha"
+    t.boolean  "esta_ativa"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
 
+  add_foreign_key "atrativos", "pjs"
   add_foreign_key "funcionarios", "pjs"
 end

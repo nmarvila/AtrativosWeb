@@ -6,6 +6,7 @@ class CreatePjs < ActiveRecord::Migration
       t.string :nome_fantasia
       t.string :email
       t.string :senha
+      t.boolean :esta_ativa
 
       t.timestamps null: false
     end
