@@ -1,0 +1,2 @@
+module PjsHelper
+end
