@@ -1,0 +1,9 @@
+<div class="ui container">
+    <%= form_for @entrada, url: {action: "create"}, html: {class: "ui form"} do |f| %>
+      <%= label_tag(:tipo, "Tipo: ") %>
+      <%= f.text_field :tipo %>
+      <%= label_tag(:data, "Data: ") %>
+      <%= f.date_field :data %>
+      <%= f.submit "Cadastrar", class: "ui primary button" %>
+    <% end %>
+</div>
