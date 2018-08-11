@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       resources :entradas
     end
   end
+  root to: "visitors#index"
+  get "/login" => "visitors#login_form"
+  post "/login" => "visitors#login"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,12 @@
+<div class="ui container">
+    <%= form_tag "/login", class: "ui form" do %>
+      <%= label_tag(:email, "E-mail: ") %>
+      <%= text_field :usuario, :email, class: "ui input focus" %>
+      <%= label_tag(:senha, "Senha: ") %>
+      <%= password_field :usuario, :senha, class: "ui input" %>
+      <%= radio_button(:usuario, :tipo, "pj") %> Pessoa Jurídica
+      <%= radio_button(:usuario, :tipo, "funcionario") %> Funcionário
+      <br />
+      <%= submit_tag "Login", class: "ui primary button" %>
+    <% end %>
+</div>
