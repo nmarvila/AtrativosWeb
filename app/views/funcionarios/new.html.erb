@@ -1,0 +1,16 @@
+<div class="ui container">
+    <%= form_for @funcionario, url: {action: "create"}, html: {class: "ui form"} do |f| %>
+      <%= label_tag(:cpf, "CPF: ") %>
+      <%= f.text_field :cpf, size: 11, maxlength: 11 %>
+      <%= label_tag(:nome, "Nome: ") %>
+      <%= f.text_field :nome %>
+      <%= label_tag(:cargo, "Cargo: ") %>
+      <%= f.text_field :cargo %>
+      <%= label_tag(:email, "E-mail: ") %>
+      <%= f.text_field :email %>
+      <%= label_tag(:senha, "Senha: ") %>
+      <%= f.password_field :senha %>
+      <%= f.hidden_field :esta_ativa, value: true %>
+      <%= f.submit "Cadastrar-se", class: "ui primary button" %>
+    <% end %>
+</div>

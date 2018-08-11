@@ -1,0 +1,2 @@
+module FuncionarioHelper
+end

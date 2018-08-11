@@ -10,7 +10,7 @@
       <%= f.text_field :email %>
       <%= label_tag(:senha, "Senha: ") %>
       <%= f.password_field :senha %>
-      <%= f.hidden_field :esta_ativa, value: 0 %>
+      <%= f.hidden_field :esta_ativa, value: true %>
       <%= f.submit "Cadastrar-se", class: "ui primary button" %>
     <% end %>
 </div>
