@@ -2,7 +2,8 @@ class FuncionariosController < ApplicationController
   before_action :set_funcionario, only: [:show, :edit, :update, :destroy]
   
   def index
-    @funcionarios = Funcionario.all
+    pj = Pj.find(params[:pj_id])
+    @funcionarios = pj.funcionarios
   end
 
   def show
@@ -28,9 +29,6 @@ class FuncionariosController < ApplicationController
   end
 
   def update
-    pj = Pj.find(params[:pj_id])
-    @funcionario = pj.funcionarios.find(params[:id])
-    
     if @funcionario.update(funcionario_params)
       redirect_to @funcionario
     else
@@ -39,8 +37,6 @@ class FuncionariosController < ApplicationController
   end
 
   def destroy
-    pj = Pj.find(params[:pj_id])
-    @funcionario = pj.funcionarios.find(params[:id])
     @funcionario.destroy
     
     redirect_to root_url
@@ -48,7 +44,8 @@ class FuncionariosController < ApplicationController
   
   private
     def set_funcionario
-        @funcionario = Funcionario.find(params[:id])
+        pj = Pj.find(params[:pj_id])
+        @funcionario = pj.funcionarios.find(params[:id])
     end
 
     def funcionario_params
