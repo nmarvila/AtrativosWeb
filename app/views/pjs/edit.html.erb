@@ -1,2 +1,16 @@
-<h1>Pjs#edit</h1>
-<p>Find me in app/views/pjs/edit.html.erb</p>
+<div class="ui container">
+    <%= form_for @pj, url: {action: "update", method: "put"}, html: {class: "ui form"} do |f| %>
+      <%= label_tag(:cnpj, "CNPJ: ") %>
+      <%= f.text_field :cnpj, size: 14, maxlength: 14, value: @pj.cnpj %>
+      <%= label_tag(:razao_social, "Razão Social: ") %>
+      <%= f.text_field :razao_social, value: @pj.razao_social %>
+      <%= label_tag(:nome_fantasia, "Nome Fantasia: ") %>
+      <%= f.text_field :nome_fantasia, value: @pj.nome_fantasia %>
+      <%= label_tag(:email, "E-mail: ") %>
+      <%= f.text_field :email, value: @pj.email %>
+      <%= label_tag(:senha, "Senha: ") %>
+      <%= f.password_field :senha %>
+      <%= f.hidden_field :esta_ativa, value: true %>
+      <%= f.submit "Atualizar Cadastro", class: "ui primary button" %>
+    <% end %>
+</div>

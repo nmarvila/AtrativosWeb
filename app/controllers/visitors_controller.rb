@@ -21,4 +21,9 @@ class VisitorsController < ApplicationController
             end
         end
     end
+    
+    def logout
+        reset_session
+        redirect_to root_url
+    end
 end

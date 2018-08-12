@@ -2,7 +2,12 @@ class PjsController < ApplicationController
   before_action :set_pj, only: [:show, :edit, :update, :destroy]
   
   def index
-    @pjs = Pj.all
+    if session[:user_type] === "pj"
+      pj = Pj.find(session[:user_id])
+      redirect_to pj
+    else
+      redirect_to root_url
+    end
   end
   
   def show

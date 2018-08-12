@@ -1,1 +1,9 @@
 <h1>Página inicial</h1>
+
+<form>
+<% if session[:user_id] != nil %>
+<button class="ui primary button" formaction="/logout" >Logout</button>
+<% else %>
+<button class="ui primary button" formaction="/login" >Login</button>
+<% end %>
+</form>

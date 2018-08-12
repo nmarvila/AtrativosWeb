@@ -1,2 +1,12 @@
-<h1>Pjs#show</h1>
-<p>Find me in app/views/pjs/show.html.erb</p>
+<div class="ui container">
+    <form class = "ui form">
+      <%= label_tag(:cnpj, "CNPJ: ") %>
+      <%= text_field :cnpj, "", size: 14, maxlength: 14, value: @pj.cnpj, disabled: true %>
+      <%= label_tag(:razao_social, "Razão Social: ") %>
+      <%= text_field :razao_social, "", value: @pj.razao_social, disabled: true %>
+      <%= label_tag(:nome_fantasia, "Nome Fantasia: ") %>
+      <%= text_field :nome_fantasia, "", value: @pj.nome_fantasia, disabled: true %>
+      <%= label_tag(:email, "E-mail: ") %>
+      <%= text_field :email, "", value: @pj.email, disabled: true %>
+    </form>
+</div>
