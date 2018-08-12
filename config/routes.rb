@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root to: "visitors#index"
   get "/login" => "visitors#login_form"
   post "/login" => "visitors#login"
-  get "logout" => "visitors#logout"
+  get "/logout" => "visitors#logout"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

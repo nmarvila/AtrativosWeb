@@ -1,2 +1,14 @@
-<h1>Funcionario#show</h1>
-<p>Find me in app/views/funcionario/show.html.erb</p>
+<div class="ui container">
+    <form class = "ui form">
+      <%= label_tag(:cpf, "CPF: ") %>
+      <%= text_field :cpf, "", value: @funcionario.cpf, disabled: true %>
+      <%= label_tag(:nome, "Nome: ") %>
+      <%= text_field :nome, "", value: @funcionario.nome, disabled: true %>
+      <%= label_tag(:cargo, "Cargo: ") %>
+      <%= text_field :cargo, "", value: @funcionario.cargo, disabled: true %>
+      <%= label_tag(:email, "E-mail: ") %>
+      <%= text_field :email, "", value: @funcionario.email, disabled: true %>
+      <%= label_tag(:pj, "Vinculado à: ") %>
+      <%= text_field :pj, "", value: @pj.nome_fantasia, disabled: true %>
+    </form>
+</div>

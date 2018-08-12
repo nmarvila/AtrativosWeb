@@ -1,2 +1,34 @@
-<h1>Funcionario#index</h1>
-<p>Find me in app/views/funcionario/index.html.erb</p>
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>Cargo</th>
+            <th>E-mail</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @funcionarios.each do |f| %>
+            <tr>
+                <td><%= f.cpf %></td>
+                <td><%= f.nome %></td>
+                <td><%= f.cargo %></td>
+                <td><%= f.email %></td>
+                <td><%= if f.esta_ativa then "Ativa" else "Inativa" end %></td>
+                <td><a href="<%= pj_funcionario_url(f.pj_id, f.id) %>" class="ui primary button">Visualizar</a></td>
+                <td><a href="<%= edit_pj_funcionario_url(f.pj_id, f.id) %>" class="ui primary button">Editar</a></td>
+                <%= form_tag pj_funcionario_url(f.pj_id, f.id), method: :delete do %>
+                    <% if f.esta_ativa %>
+                        <td><%= button_tag "Desativar", class: "ui primary button" %></td>
+                    <% else %>
+                        <td><%= button_tag "Reativar", class: "ui primary button" %></td>
+                    <% end %>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
