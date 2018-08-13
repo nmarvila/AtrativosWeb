@@ -4,8 +4,8 @@
       <%= text_field :usuario, :email, class: "ui input focus" %>
       <%= label_tag(:senha, "Senha: ") %>
       <%= password_field :usuario, :senha, class: "ui input" %>
-      <%= radio_button(:usuario, :tipo, "pj") %> Pessoa Jurídica
-      <%= radio_button(:usuario, :tipo, "funcionario") %> Funcionário
+      <%= radio_button(:usuario, :tipo, "pj", required: true) %> Pessoa Jurídica
+      <%= radio_button(:usuario, :tipo, "funcionario", required: true) %> Funcionário
       <br />
       <%= submit_tag "Login", class: "ui primary button" %>
     <% end %>

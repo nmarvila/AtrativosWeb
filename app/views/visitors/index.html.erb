@@ -1,9 +1,17 @@
-<h1>Página inicial</h1>
+<%= render "menu" %>
 
-<form>
-<% if session[:user_id] != nil %>
-<button class="ui primary button" formaction="/logout" >Logout</button>
-<% else %>
-<button class="ui primary button" formaction="/login" >Login</button>
+<% if flash[:success] %>
+  <div class="ui success message">
+    <p><%= flash[:success] %></p>
+    <i class="close icon"></i>
+  </div>
+<% elsif flash[:error] %>
+  <div class="ui error message">
+    <p><%= flash[:error] %></p>
+    <i class="close icon"></i>
+  </div>
 <% end %>
-</form>
+
+<div class="ui segment">
+    <h1>Página inicial</h1>
+</div>

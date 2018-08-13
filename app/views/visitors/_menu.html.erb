@@ -1,0 +1,27 @@
+<div class="ui large secondary pointing menu">
+  <div class="header item">
+    Atrativos Web
+  </div>
+  <% if session[:user_id] != nil %>
+    <a class="item active">
+      Home
+    </a>
+    <a class="item">
+      Messages
+    </a>
+    <a class="item">
+      Friends
+    </a>
+    <div class="right menu">
+      <a class="ui item" href="/logout">
+        Logout
+      </a>
+    </div>
+  <% else %>
+    <div class="right menu">
+      <a class="ui item" href="/login">
+        Login
+      </a>
+    </div>
+  <% end %>
+</div>
