@@ -1,2 +1,20 @@
-<h1>Atrativos#show</h1>
-<p>Find me in app/views/atrativos/show.html.erb</p>
+<div class="ui container">
+    <form class = "ui form">
+      <%= label_tag(:nome, "Nome: ") %>
+      <%= text_field :nome, "", value: @atrativo.nome, disabled: true %>
+      <%= label_tag(:endereco, "Endereço: ") %>
+      <%= text_field :endereco, "", value: @atrativo.endereco, disabled: true %>
+      <%= label_tag(:duracao, "Duração: ") %>
+      <%= text_field :duracao, "", value: @atrativo.duracao, disabled: true %>
+      <%= label_tag(:capacidade, "Capacidade máxima: ") %>
+      <%= text_field :capacidade, "", value: @atrativo.capacidade, disabled: true %>
+      <%= label_tag(:imagem, "Imagem: ") %>
+      <%= text_field :imagem, "", value: @atrativo.imagem, disabled: true %>
+      <%= label_tag(:ingresso_crianca, "Valor do ingresso infantil: ") %>
+      <%= text_field :ingresso_crianca, "", value: @atrativo.ingresso_crianca, disabled: true %>
+      <%= label_tag(:ingresso_adulto, "Valor do ingresso adulto: ") %>
+      <%= text_field :ingresso_adulto, "", value: @atrativo.ingresso_adulto, disabled: true %>
+      <%= label_tag(:pj, "Vinculado à: ") %>
+      <%= text_field :pj, "", value: @pj.nome_fantasia, disabled: true %>
+    </form>
+</div>

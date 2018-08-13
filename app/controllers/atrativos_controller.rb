@@ -2,24 +2,24 @@ class AtrativosController < ApplicationController
   before_action :set_atrativo, only: [:show, :edit, :update, :destroy]
   
   def index
-    pj = Pj.find(params[:pj_id])
-    @atrativos = pj.atrativos
+    @pj = Pj.find(params[:pj_id])
+    @atrativos = @pj.atrativos
   end
 
   def show
   end
 
   def new
-    pj = Pj.find(params[:pj_id])
-    @atrativo = pj.atrativos.build
+    @pj = Pj.find(params[:pj_id])
+    @atrativo = @pj.atrativos.build
   end
 
   def edit
   end
 
   def create
-    pj = Pj.find(params[:pj_id])
-    @atrativo = pj.atrativos.new(atrativo_params)
+    @pj = Pj.find(params[:pj_id])
+    @atrativo = @pj.atrativos.new(atrativo_params)
     
     if @atrativo.save
       redirect_to :pj_atrativos
@@ -30,7 +30,7 @@ class AtrativosController < ApplicationController
 
   def update
     if @atrativo.update(atrativo_params)
-      redirect_to @atrativo
+      redirect_to pj_atrativo_url(@atrativo.pj_id, @atrativo.id)
     else
       render :edit
     end
@@ -39,13 +39,13 @@ class AtrativosController < ApplicationController
   def destroy
     @atrativo.destroy
     
-    redirect_to root_url
+    redirect_to :pj_atrativos
   end
   
   private
     def set_atrativo
-        pj = Pj.find(params[:pj_id])
-        @atrativo = pj.atrativos.find(params[:id])
+        @pj = Pj.find(params[:pj_id])
+        @atrativo = @pj.atrativos.find(params[:id])
     end
 
     def atrativo_params

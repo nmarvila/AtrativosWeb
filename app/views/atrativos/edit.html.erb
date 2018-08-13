@@ -1,2 +1,19 @@
-<h1>Atrativos#edit</h1>
-<p>Find me in app/views/atrativos/edit.html.erb</p>
+<div class="ui container">
+    <%= form_for @atrativo, url: {action: "update"}, html: {class: "ui form"} do |f| %>
+      <%= label_tag(:nome, "Nome: ") %>
+      <%= f.text_field :nome, value: @atrativo.nome %>
+      <%= label_tag(:endereco, "Endereço: ") %>
+      <%= f.text_field :endereco, value: @atrativo.endereco %>
+      <%= label_tag(:duracao, "Duração (em minutos): ") %>
+      <%= f.number_field :duracao, min: 1, value: @atrativo.duracao %>
+      <%= label_tag(:capacidade, "Capacidade máxima: ") %>
+      <%= f.number_field :capacidade, min: 1, value: @atrativo.capacidade %>
+      <%= label_tag(:imagem, "Imagem (URL): ") %>
+      <%= f.text_field :imagem, value: @atrativo.imagem %>
+      <%= label_tag(:ingresso_crianca, "Valor do ingresso infantil: ") %>
+      <%= f.number_field :ingresso_crianca, min: 0.01, step: 0.01, value: @atrativo.ingresso_crianca %>
+      <%= label_tag(:ingresso_adulto, "Valor do ingresso adulto: ") %>
+      <%= f.number_field :ingresso_adulto, min: 0.01, step: 0.01, value: @atrativo.ingresso_adulto %>
+      <%= f.submit "Atualizar Cadastro", class: "ui primary button" %>
+    <% end %>
+</div>

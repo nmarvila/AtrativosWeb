@@ -7,7 +7,7 @@
       <%= label_tag(:duracao, "Duração (em minutos): ") %>
       <%= f.number_field :duracao, min: 1 %>
       <%= label_tag(:capacidade, "Capacidade máxima: ") %>
-      <%= f.number_field :capacidade %>
+      <%= f.number_field :capacidade, min: 1 %>
       <%= label_tag(:imagem, "Imagem (URL): ") %>
       <%= f.text_field :imagem %>
       <%= label_tag(:ingresso_crianca, "Valor do ingresso infantil: ") %>
