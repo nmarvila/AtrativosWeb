@@ -1,2 +1,10 @@
-<h1>Entradas#show</h1>
-<p>Find me in app/views/entradas/show.html.erb</p>
+<div class="ui container">
+    <form class = "ui form">
+      <%= label_tag(:tipo, "Tipo: ") %>
+      <%= text_field :tipo, "", value: @entrada.tipo, disabled: true %>
+      <%= label_tag(:data, "Data: ") %>
+      <%= text_field :data, "", value: @entrada.data, disabled: true %>
+      <%= label_tag(:atrativo, "Vinculado à: ") %>
+      <%= text_field :atrativo, "", value: @atrativo.nome, disabled: true %>
+    </form>
+</div>

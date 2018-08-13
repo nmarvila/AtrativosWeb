@@ -1,2 +1,9 @@
-<h1>Entradas#edit</h1>
-<p>Find me in app/views/entradas/edit.html.erb</p>
+<div class="ui container">
+    <%= form_for @entrada, url: {action: "update"}, html: {class: "ui form"} do |f| %>
+      <%= label_tag(:tipo, "Tipo: ") %>
+      <%= f.text_field :tipo, value: @entrada.tipo %>
+      <%= label_tag(:data, "Data: ") %>
+      <%= f.date_field :data, value: @entrada.data %>
+      <%= f.submit "Atualizar Cadastro", class: "ui primary button" %>
+    <% end %>
+</div>

@@ -1,2 +1,24 @@
-<h1>Entradas#index</h1>
-<p>Find me in app/views/entradas/index.html.erb</p>
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Data</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @entradas.each do |e| %>
+            <tr>
+                <td><%= e.tipo %></td>
+                <td><%= e.data %></td>
+                <td><a href="<%= pj_atrativo_entrada_url(params["pj_id"], e.atrativo_id, e.id) %>" class="ui primary button">Visualizar</a></td>
+                <td><a href="<%= edit_pj_atrativo_entrada_url(params["pj_id"], e.atrativo_id, e.id) %>" class="ui primary button">Editar</a></td>
+                <%= form_tag pj_atrativo_entrada_url(params["pj_id"], e.atrativo_id, e.id), method: :delete do %>
+                    <td><%= button_tag "Excluir", class: "ui primary button" %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
