@@ -1,16 +1,33 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<div class="ui segment">
     <%= form_for @pj, url: {action: "create"}, html: {class: "ui form"} do |f| %>
+      <div class="ui field">
       <%= label_tag(:cnpj, "CNPJ: ") %>
       <%= f.text_field :cnpj, size: 14, maxlength: 14 %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:razao_social, "Razão Social: ") %>
       <%= f.text_field :razao_social %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:nome_fantasia, "Nome Fantasia: ") %>
       <%= f.text_field :nome_fantasia %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:email, "E-mail: ") %>
       <%= f.text_field :email %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:senha, "Senha: ") %>
       <%= f.password_field :senha %>
+      </div>
       <%= f.hidden_field :esta_ativa, value: true %>
-      <%= f.submit "Cadastrar-se", class: "ui primary button" %>
+      <div class="ui field">
+        <button class="ui primary button">
+          <i class="user plus icon"></i>
+          Cadastrar-se
+        </button>
+      </div>
     <% end %>
 </div>

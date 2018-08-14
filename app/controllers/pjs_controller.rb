@@ -4,8 +4,11 @@ class PjsController < ApplicationController
   def index
     if session[:user_type] === "pj"
       pj = Pj.find(session[:user_id])
+      session[:page] = ""
       redirect_to pj
     else
+      flash[:error] = "Você não possui permissão para acessar essa página."
+      session[:page] = "home"
       redirect_to root_url
     end
   end
@@ -24,7 +27,7 @@ class PjsController < ApplicationController
     @pj = Pj.new(pj_params)
     
     if @pj.save
-      redirect_to @pj
+      redirect_to "/login"
     else
       render :new
     end
@@ -32,6 +35,7 @@ class PjsController < ApplicationController
 
   def update
     if @pj.update(pj_params)
+      session[:page] = ""
       redirect_to @pj
     else
       render :edit

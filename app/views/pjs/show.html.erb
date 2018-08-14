@@ -1,5 +1,8 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<div class="ui segment">
     <form class = "ui form">
+      <h2 class="ui header">Suas informações</h2>
       <%= label_tag(:cnpj, "CNPJ: ") %>
       <%= text_field :cnpj, "", value: @pj.cnpj, disabled: true %>
       <%= label_tag(:razao_social, "Razão Social: ") %>

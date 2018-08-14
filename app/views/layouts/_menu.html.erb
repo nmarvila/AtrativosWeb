@@ -2,21 +2,21 @@
   <div class="header item">
     Atrativos Web
   </div>
-    <a class="item active" href="<%= root_url %>">
+    <a class="item <%= if session[:page] === 'home' then 'active' end %>" href="<%= root_url %>">
       Home
     </a>
     <% if session[:user_id] != nil %>
-    <a class="item" href="<%= pj_atrativos_url(session[:pj_id]) %>">
+    <a class="item <%= if session[:page] === 'atrativo' then 'active' end %>" href="<%= pj_atrativos_url(session[:pj_id]) %>">
       Atrativos
     </a>
     <% end %>
     <% if session[:atrativo_id] != nil %>
-    <a class="item" href="<%= pj_atrativo_entradas_url(session[:pj_id], session[:atrativo_id]) %>">
+    <a class="item <%= if session[:page] === 'entrada' then 'active' end %>" href="<%= pj_atrativo_entradas_url(session[:pj_id], session[:atrativo_id]) %>">
       Entradas
     </a>
     <% end %>
     <% if session[:user_id] != nil && session[:user_type] = "pj" %>
-    <a class="item" href="<%= pj_funcionarios_url(session[:pj_id]) %>">
+    <a class="item <%= if session[:page] === 'funcionario' then 'active' end %>" href="<%= pj_funcionarios_url(session[:pj_id]) %>">
       Funcionários
     </a>
     <% end %>

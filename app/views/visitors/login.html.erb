@@ -6,7 +6,6 @@
       </div>
     </h2>
     <%= form_tag "/login", class: "ui large form" do %>
-    <!--<form class="ui large form" action="/login" method="POST">-->
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
@@ -35,12 +34,14 @@
             </div>
           </div>
         </div>
-        <div>
-          <%= button_tag "Login", class: "ui fluid large blue submit button" %>
+        <div class="ui field">
+          <button class="ui fluid large blue submit button">
+            <i class="sign in alternate icon"></i>
+            Login
+          </button>
         </div>
       </div>
     <% end %>
-    <!--</form>-->
 
     <div class="ui message">
       Não possui uma conta? <a href="<%= new_pj_url %>">Cadastre-se aqui</a>
