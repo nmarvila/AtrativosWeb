@@ -2,26 +2,35 @@
   <div class="header item">
     Atrativos Web
   </div>
-  <% if session[:user_id] != nil %>
-    <a class="item active">
+    <a class="item active" href="<%= root_url %>">
       Home
     </a>
-    <a class="item">
-      Messages
+    <% if session[:user_id] != nil %>
+    <a class="item" href="<%= pj_atrativos_url(session[:pj_id]) %>">
+      Atrativos
     </a>
-    <a class="item">
-      Friends
+    <% end %>
+    <% if session[:atrativo_id] != nil %>
+    <a class="item" href="<%= pj_atrativo_entradas_url(session[:pj_id], session[:atrativo_id]) %>">
+      Entradas
     </a>
+    <% end %>
+    <% if session[:user_id] != nil && session[:user_type] = "pj" %>
+    <a class="item" href="<%= pj_funcionarios_url(session[:pj_id]) %>">
+      Funcionários
+    </a>
+    <% end %>
+    <% if session[:user_id] != nil %>
     <div class="right menu">
       <a class="ui item" href="/logout">
         Logout
       </a>
     </div>
-  <% else %>
+    <% else %>
     <div class="right menu">
       <a class="ui item" href="/login">
         Login
       </a>
     </div>
-  <% end %>
+    <% end %>
 </div>

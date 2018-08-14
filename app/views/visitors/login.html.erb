@@ -1,12 +1,49 @@
-<div class="ui container">
-    <%= form_tag "/login", class: "ui form" do %>
-      <%= label_tag(:email, "E-mail: ") %>
-      <%= text_field :usuario, :email, class: "ui input focus" %>
-      <%= label_tag(:senha, "Senha: ") %>
-      <%= password_field :usuario, :senha, class: "ui input" %>
-      <%= radio_button(:usuario, :tipo, "pj", required: true) %> Pessoa Jurídica
-      <%= radio_button(:usuario, :tipo, "funcionario", required: true) %> Funcionário
-      <br />
-      <%= submit_tag "Login", class: "ui primary button" %>
+<div class="ui middle aligned center aligned grid" id="login_form">
+  <div class="column">
+    <h2 class="ui blue image header">
+      <div class="content">
+        Efetue o login em sua conta
+      </div>
+    </h2>
+    <%= form_tag "/login", class: "ui large form" do %>
+    <!--<form class="ui large form" action="/login" method="POST">-->
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <%= text_field :usuario, :email, placeholder: "E-mail" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <%= password_field :usuario, :senha, placeholder: "Senha" %>
+          </div>
+        </div>
+        <div class="inline fields">
+          <label for="tipo">Selecione o tipo de conta:</label>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input name="usuario[tipo]" id="usuario[tipo]" checked="" tabindex="0" class="hidden" type="radio" value="pj">
+              <label>PJ</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input name="usuario[tipo]" id="usuario[tipo]" tabindex="0" class="hidden" type="radio" value="funcionario">
+              <label>Funcionário</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <%= button_tag "Login", class: "ui fluid large blue submit button" %>
+        </div>
+      </div>
     <% end %>
+    <!--</form>-->
+
+    <div class="ui message">
+      Não possui uma conta? <a href="<%= new_pj_url %>">Cadastre-se aqui</a>
+    </div>
+  </div>
 </div>

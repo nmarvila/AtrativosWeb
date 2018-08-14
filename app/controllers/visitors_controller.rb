@@ -8,6 +8,7 @@ class VisitorsController < ApplicationController
             pj = Pj.where(email: params["usuario"]["email"]).first
             if pj != nil && pj.senha === params["usuario"]["senha"]
                 session[:user_id] = pj.id
+                session[:pj_id] = pj.id
                 session[:user_type] = "pj"
                 flash[:success] = "Login efetuado com sucesso. Seja bem-vindo." 
                 redirect_to root_url
@@ -20,6 +21,7 @@ class VisitorsController < ApplicationController
             if funcionario != nil && funcionario.senha === params["usuario"]["senha"]
                 pj = Pj.find(funcionario.pj_id)
                 session[:user_id] = funcionario.id
+                session[:pj_id] = funcionario.pj_id
                 session[:user_type] = "funcionario"
                 flash[:success] = "Login efetuado com sucesso. Seja bem-vindo."
                 redirect_to root_url
