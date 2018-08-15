@@ -1,26 +1,33 @@
 <%= render "/layouts/menu" %>
 
+<% if flash[:error] %>
+  <div class="ui error message">
+    <p><%= flash[:error] %></p>
+    <i class="close icon"></i>
+  </div>
+<% end %>
+
 <div class="ui segment">
     <%= form_for @pj, url: {action: "create"}, html: {class: "ui form"} do |f| %>
       <div class="ui field">
       <%= label_tag(:cnpj, "CNPJ: ") %>
-      <%= f.text_field :cnpj, size: 14, maxlength: 14 %>
+      <%= f.text_field :cnpj, size: 14, maxlength: 14, required: true %>
       </div>
       <div class="ui field">
       <%= label_tag(:razao_social, "Razão Social: ") %>
-      <%= f.text_field :razao_social %>
+      <%= f.text_field :razao_social, required: true %>
       </div>
       <div class="ui field">
       <%= label_tag(:nome_fantasia, "Nome Fantasia: ") %>
-      <%= f.text_field :nome_fantasia %>
+      <%= f.text_field :nome_fantasia, required: true %>
       </div>
       <div class="ui field">
       <%= label_tag(:email, "E-mail: ") %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, required: true %>
       </div>
       <div class="ui field">
       <%= label_tag(:senha, "Senha: ") %>
-      <%= f.password_field :senha %>
+      <%= f.password_field :senha, required: true %>
       </div>
       <%= f.hidden_field :esta_ativa, value: true %>
       <div class="ui field">

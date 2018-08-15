@@ -1,16 +1,40 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<% if flash[:error] %>
+  <div class="ui error message">
+    <p><%= flash[:error] %></p>
+    <i class="close icon"></i>
+  </div>
+<% end %>
+
+<div class="ui segment">
     <%= form_for @pj, url: {action: "update", method: "put"}, html: {class: "ui form"} do |f| %>
+      <div class="ui field">
       <%= label_tag(:cnpj, "CNPJ: ") %>
       <%= f.text_field :cnpj, size: 14, maxlength: 14, value: @pj.cnpj %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:razao_social, "Razão Social: ") %>
       <%= f.text_field :razao_social, value: @pj.razao_social %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:nome_fantasia, "Nome Fantasia: ") %>
       <%= f.text_field :nome_fantasia, value: @pj.nome_fantasia %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:email, "E-mail: ") %>
       <%= f.text_field :email, value: @pj.email %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:senha, "Senha: ") %>
       <%= f.password_field :senha %>
+      </div>
       <%= f.hidden_field :esta_ativa, value: true %>
-      <%= f.submit "Atualizar Cadastro", class: "ui primary button" %>
+      <div class="ui field">
+        <button class="ui primary button">
+          <i class="edit icon"></i>
+          Atualizar Cadastro
+        </button>
+      </div>
     <% end %>
 </div>

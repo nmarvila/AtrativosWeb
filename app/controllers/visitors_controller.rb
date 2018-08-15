@@ -7,7 +7,7 @@ class VisitorsController < ApplicationController
     def login 
         if params["usuario"]["tipo"] === "pj"
             pj = Pj.where(email: params["usuario"]["email"]).first
-            if pj != nil && pj.senha === params["usuario"]["senha"]
+            if pj != nil && pj.senha === params["usuario"]["senha"] && pj.esta_ativa === true
                 session[:user_id] = pj.id
                 session[:pj_id] = pj.id
                 session[:user_type] = "pj"
@@ -21,7 +21,7 @@ class VisitorsController < ApplicationController
             end
         elsif params["usuario"]["tipo"] === "funcionario"
             funcionario = Funcionario.where(email: params["usuario"]["email"]).first
-            if funcionario != nil && funcionario.senha === params["usuario"]["senha"]
+            if funcionario != nil && funcionario.senha === params["usuario"]["senha"] && funcionario.esta_ativa === true
                 pj = Pj.find(funcionario.pj_id)
                 session[:user_id] = funcionario.id
                 session[:pj_id] = funcionario.pj_id

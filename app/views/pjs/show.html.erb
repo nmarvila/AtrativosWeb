@@ -1,15 +1,39 @@
 <%= render "/layouts/menu" %>
 
 <div class="ui segment">
-    <form class = "ui form">
-      <h2 class="ui header">Suas informações</h2>
-      <%= label_tag(:cnpj, "CNPJ: ") %>
-      <%= text_field :cnpj, "", value: @pj.cnpj, disabled: true %>
-      <%= label_tag(:razao_social, "Razão Social: ") %>
-      <%= text_field :razao_social, "", value: @pj.razao_social, disabled: true %>
-      <%= label_tag(:nome_fantasia, "Nome Fantasia: ") %>
-      <%= text_field :nome_fantasia, "", value: @pj.nome_fantasia, disabled: true %>
-      <%= label_tag(:email, "E-mail: ") %>
-      <%= text_field :email, "", value: @pj.email, disabled: true %>
-    </form>
+  <form class = "ui form">
+    <h2 class="ui header">Suas informações</h2>
+    <div class="ui field">
+    <%= label_tag(:cnpj, "CNPJ: ") %>
+    <%= text_field :cnpj, "", value: @pj.cnpj, disabled: true %>
+    </div>
+    <div class="ui field">
+    <%= label_tag(:razao_social, "Razão Social: ") %>
+    <%= text_field :razao_social, "", value: @pj.razao_social, disabled: true %>
+    </div>
+    <div class="ui field">
+    <%= label_tag(:nome_fantasia, "Nome Fantasia: ") %>
+    <%= text_field :nome_fantasia, "", value: @pj.nome_fantasia, disabled: true %>
+    </div>
+    <div class="ui field">
+    <%= label_tag(:email, "E-mail: ") %>
+    <%= text_field :email, "", value: @pj.email, disabled: true %>
+    </div>
+    <div class="ui field">
+      <button class="ui orange button" formaction="<%= edit_pj_url(@pj.id) %>">
+        <i class="edit icon"></i>
+        Alterar
+      </button>
+    </div>
+  </form>
+  <div id="btnDelete">
+    <%= form_tag pj_url(@pj), method: :delete do %>
+      <% if @pj.esta_ativa %>
+      <button name="button" type="submit" class="ui red button" data-confirm="Você tem certeza?">
+        <i class="user times icon"></i>
+        Desativar
+      </button>
+      <% end %>
+    <% end %>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 class PjsController < ApplicationController
-  before_action :set_pj, only: [:show, :edit, :update, :destroy]
+  before_action :set_pj, only: [:show, :edit, :update, :destroy, :delete]
   
   def index
     if session[:user_type] === "pj"
@@ -29,6 +29,7 @@ class PjsController < ApplicationController
     if @pj.save
       redirect_to "/login"
     else
+      flash[:error] = "Ocorreu um erro na tentativa de cadastro. Por favor, tente novamente."
       render :new
     end
   end
@@ -38,13 +39,18 @@ class PjsController < ApplicationController
       session[:page] = ""
       redirect_to @pj
     else
+      flash[:error] = "Ocorreu um erro na tentativa de atualização. Por favor, tente novamente."
       render :edit
     end
   end
 
   def destroy
-    @pj.destroy
-    redirect_to root_url
+    if @pj.esta_ativa
+      @pj.esta_ativa = false
+      
+      @pj.update(params.permit(:cpf, :nome, :cargo, :email, :senha, :esta_ativa, :pj_id))
+      redirect_to "/logout"
+    end
   end
   
   private
