@@ -1,14 +1,35 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<div class="ui segment">
     <form class = "ui form">
+      <div class="ui field">
       <%= label_tag(:cpf, "CPF: ") %>
       <%= text_field :cpf, "", value: @funcionario.cpf, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:nome, "Nome: ") %>
       <%= text_field :nome, "", value: @funcionario.nome, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:cargo, "Cargo: ") %>
       <%= text_field :cargo, "", value: @funcionario.cargo, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:email, "E-mail: ") %>
       <%= text_field :email, "", value: @funcionario.email, disabled: true %>
+      </div>
+      <div class="ui field">
+      <%= label_tag(:status, "Status: ") %>
+      <%= text_field :status, "", value: if @funcionario.esta_ativa then "Ativo" else "Inativo" end, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:pj, "Vinculado à: ") %>
       <%= text_field :pj, "", value: @pj.nome_fantasia, disabled: true %>
+      </div>
+      <div class="ui field">
+        <a href="<%= pj_funcionarios_url(session[:pj_id]) %>" class="ui blue button">
+          <i class="arrow left icon"></i>
+          Voltar à Listagem</a></td>
+      </div>
     </form>
 </div>

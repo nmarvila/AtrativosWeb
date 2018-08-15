@@ -2,19 +2,46 @@ class FuncionariosController < ApplicationController
   before_action :set_funcionario, only: [:show, :edit, :update, :destroy]
   
   def index
-    @pj = Pj.find(params[:pj_id])
-    @funcionarios = @pj.funcionarios
+    if session[:user_type] === "pj"
+      session[:page] = "funcionario"
+      @pj = Pj.find(params[:pj_id])
+      @funcionarios = @pj.funcionarios
+    elsif session[:user_type] === "funcionario"
+      flash[:error] = "Você não possui permissão para acessar essa página."
+      session[:page] = "home"
+      redirect_to root_url
+    end
   end
 
   def show
+    if session[:user_type] != "pj" && session[:user_id] != @funcionario.id
+      flash[:error] = "Você não possui permissão para acessar essa página."
+      session[:page] = "home"
+      redirect_to root_url
+    else
+      render "show"
+    end
   end
 
   def new
-    @pj = Pj.find(params[:pj_id])
-    @funcionario = @pj.funcionarios.build
+    if session[:user_type] === "pj"
+      @pj = Pj.find(params[:pj_id])
+      @funcionario = @pj.funcionarios.build
+    elsif session[:user_type] === "funcionario"
+      flash[:error] = "Você não possui permissão para acessar essa página."
+      session[:page] = "home"
+      redirect_to root_url
+    end
   end
 
   def edit
+    if session[:user_type] != "pj" && session[:user_id] != @funcionario.id
+      flash[:error] = "Você não possui permissão para acessar essa página."
+      session[:page] = "home"
+      redirect_to root_url
+    else
+      render "edit"
+    end
   end
 
   def create
@@ -30,7 +57,7 @@ class FuncionariosController < ApplicationController
 
   def update
     if @funcionario.update(funcionario_params)
-      redirect_to pj_funcionario_url(@funcionario.pj_id, @funcionario.id)
+      redirect_to pj_funcionarios_url(@funcionario.pj_id)
     else
       render :edit
     end

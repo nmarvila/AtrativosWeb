@@ -15,7 +15,7 @@
       Entradas
     </a>
     <% end %>
-    <% if session[:user_id] != nil && session[:user_type] = "pj" %>
+    <% if session[:user_id] != nil && session[:user_type] === "pj" %>
     <a class="item <%= if session[:page] === 'funcionario' then 'active' end %>" href="<%= pj_funcionarios_url(session[:pj_id]) %>">
       Funcionários
     </a>

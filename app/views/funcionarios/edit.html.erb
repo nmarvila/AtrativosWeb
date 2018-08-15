@@ -1,16 +1,33 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<div class="ui segment">
     <%= form_for @funcionario, url: {action: "update"}, html: {class: "ui form"} do |f| %>
+      <div class="ui field">
       <%= label_tag(:cpf, "CPF: ") %>
       <%= f.text_field :cpf, size: 11, maxlength: 11, value: @funcionario.cpf %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:nome, "Nome: ") %>
       <%= f.text_field :nome, value: @funcionario.nome %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:cargo, "Cargo: ") %>
       <%= f.text_field :cargo, value: @funcionario.cargo %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:email, "E-mail: ") %>
       <%= f.text_field :email, value: @funcionario.email %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:senha, "Senha: ") %>
       <%= f.password_field :senha %>
+      </div>
       <%= f.hidden_field :esta_ativa, value: @funcionario.esta_ativa %>
-      <%= f.submit "Atualizar Cadastro", class: "ui primary button" %>
+      <div class="ui field">
+      <button class="ui orange button">
+          <i class="edit icon"></i>
+          Atualizar Informações
+        </button>
+      </div>
     <% end %>
 </div>

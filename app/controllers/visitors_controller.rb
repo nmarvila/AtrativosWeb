@@ -19,10 +19,9 @@ class VisitorsController < ApplicationController
                 session[:page] = "home"
                 redirect_to root_url
             end
-        elsif params["usuario"]["tipo"] === "funcionario"
+        else params["usuario"]["tipo"] === "funcionario"
             funcionario = Funcionario.where(email: params["usuario"]["email"]).first
             if funcionario != nil && funcionario.senha === params["usuario"]["senha"] && funcionario.esta_ativa === true
-                pj = Pj.find(funcionario.pj_id)
                 session[:user_id] = funcionario.id
                 session[:pj_id] = funcionario.pj_id
                 session[:user_type] = "funcionario"
