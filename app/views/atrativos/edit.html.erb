@@ -1,19 +1,40 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<div class="ui segment">
     <%= form_for @atrativo, url: {action: "update"}, html: {class: "ui form"} do |f| %>
+      <div class="ui field">
       <%= label_tag(:nome, "Nome: ") %>
       <%= f.text_field :nome, value: @atrativo.nome %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:endereco, "Endereço: ") %>
       <%= f.text_field :endereco, value: @atrativo.endereco %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:duracao, "Duração (em minutos): ") %>
       <%= f.number_field :duracao, min: 1, value: @atrativo.duracao %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:capacidade, "Capacidade máxima: ") %>
       <%= f.number_field :capacidade, min: 1, value: @atrativo.capacidade %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:imagem, "Imagem (URL): ") %>
       <%= f.text_field :imagem, value: @atrativo.imagem %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:ingresso_crianca, "Valor do ingresso infantil: ") %>
       <%= f.number_field :ingresso_crianca, min: 0.01, step: 0.01, value: @atrativo.ingresso_crianca %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:ingresso_adulto, "Valor do ingresso adulto: ") %>
       <%= f.number_field :ingresso_adulto, min: 0.01, step: 0.01, value: @atrativo.ingresso_adulto %>
-      <%= f.submit "Atualizar Cadastro", class: "ui primary button" %>
+      </div>
+      <div class="ui field">
+      <button class="ui orange button">
+          <i class="edit icon"></i>
+          Atualizar Informações
+        </button>
+      </div>
     <% end %>
 </div>

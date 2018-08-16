@@ -26,10 +26,12 @@
       <%= label_tag(:pj, "Vinculado à: ") %>
       <%= text_field :pj, "", value: @pj.nome_fantasia, disabled: true %>
       </div>
+      <% if session[:user_type] === "pj" %>
       <div class="ui field">
         <a href="<%= pj_funcionarios_url(session[:pj_id]) %>" class="ui blue button">
           <i class="arrow left icon"></i>
           Voltar à Listagem</a></td>
       </div>
+      <% end %>
     </form>
 </div>

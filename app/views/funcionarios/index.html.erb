@@ -25,7 +25,7 @@
                     <td><%= if f.esta_ativa then "Ativo" else "Inativo" end %></td>
                     <td class="center aligned">
                         <a href="<%= pj_funcionario_url(f.pj_id, f.id) %>" class="ui blue button">
-                            <i class="user icon"></i>
+                            <i class="eye icon"></i>
                             Visualizar</a></td>
                     <td class="center aligned">
                         <a href="<%= edit_pj_funcionario_url(f.pj_id, f.id) %>" class="ui orange button">
@@ -33,11 +33,11 @@
                             Editar</a></td>
                     <%= form_tag pj_funcionario_url(f.pj_id, f.id), method: :delete do %>
                         <% if f.esta_ativa %>
-                            <td class="center aligned"><button name="button" class="ui red button">
+                            <td class="center aligned"><button name="button" type="submit" class="ui red button">
                                 <i class="user times icon"></i>
                                 Desativar</button></td>
                         <% else %>
-                            <td class="center aligned"><button name="button" class="ui green button">
+                            <td class="center aligned"><button name="button" type="submit" class="ui green button">
                                 <i class="user plus icon"></i>
                                 Reativar</button></td>
                         <% end %>

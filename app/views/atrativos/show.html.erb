@@ -1,20 +1,45 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<div class="ui segment">
     <form class = "ui form">
+      <div class="ui field">
+        <img class="ui centered big rounded image" src="<%= @atrativo.imagem %>">
+      </div>
+      <div class="ui field">
       <%= label_tag(:nome, "Nome: ") %>
       <%= text_field :nome, "", value: @atrativo.nome, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:endereco, "Endereço: ") %>
       <%= text_field :endereco, "", value: @atrativo.endereco, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:duracao, "Duração: ") %>
       <%= text_field :duracao, "", value: @atrativo.duracao, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:capacidade, "Capacidade máxima: ") %>
       <%= text_field :capacidade, "", value: @atrativo.capacidade, disabled: true %>
-      <%= label_tag(:imagem, "Imagem: ") %>
-      <%= text_field :imagem, "", value: @atrativo.imagem, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:ingresso_crianca, "Valor do ingresso infantil: ") %>
       <%= text_field :ingresso_crianca, "", value: @atrativo.ingresso_crianca, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:ingresso_adulto, "Valor do ingresso adulto: ") %>
       <%= text_field :ingresso_adulto, "", value: @atrativo.ingresso_adulto, disabled: true %>
+      </div>
+      <div class="ui field">
+      <%= label_tag(:total_visitas, "Total de visitas do mês: ") %>
+      <%= text_field :total_visitas, "", value: @total_visitas, disabled: true %>
+      </div>
+      <div class="ui field">
+      <%= label_tag(:total_ingressos, "Valor arrecadado no mês: ") %>
+      <%= text_field :total_ingressos, "", value: @total_ingressos, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:pj, "Vinculado à: ") %>
       <%= text_field :pj, "", value: @pj.nome_fantasia, disabled: true %>
+      </div>
     </form>
 </div>

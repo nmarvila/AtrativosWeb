@@ -41,4 +41,8 @@ class VisitorsController < ApplicationController
         session[:page] = "home"
         redirect_to root_url
     end
+    
+    def index
+        session[:page] = "home"
+    end
 end

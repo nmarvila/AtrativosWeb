@@ -19,6 +19,7 @@ class FuncionariosController < ApplicationController
       session[:page] = "home"
       redirect_to root_url
     else
+      session[:page] = "funcionario"
       render "show"
     end
   end
@@ -27,6 +28,7 @@ class FuncionariosController < ApplicationController
     if session[:user_type] === "pj"
       @pj = Pj.find(params[:pj_id])
       @funcionario = @pj.funcionarios.build
+      session[:page] = "funcionario"
     elsif session[:user_type] === "funcionario"
       flash[:error] = "Você não possui permissão para acessar essa página."
       session[:page] = "home"
@@ -40,6 +42,7 @@ class FuncionariosController < ApplicationController
       session[:page] = "home"
       redirect_to root_url
     else
+      session[:page] = "funcionario"
       render "edit"
     end
   end
@@ -49,6 +52,7 @@ class FuncionariosController < ApplicationController
     @funcionario = @pj.funcionarios.new(funcionario_params)
     
     if @funcionario.save
+      session[:page] = "funcionario"
       redirect_to :pj_funcionarios
     else
       render :new
@@ -57,6 +61,7 @@ class FuncionariosController < ApplicationController
 
   def update
     if @funcionario.update(funcionario_params)
+      session[:page] = "funcionario"
       redirect_to pj_funcionarios_url(@funcionario.pj_id)
     else
       render :edit
@@ -68,11 +73,13 @@ class FuncionariosController < ApplicationController
       @funcionario.esta_ativa = false
       
       @funcionario.update(params.permit(:cpf, :nome, :cargo, :email, :senha, :esta_ativa, :pj_id))
+      session[:page] = "funcionario"
       redirect_to :pj_funcionarios
     else
       @funcionario.esta_ativa = true
       
       @funcionario.update(params.permit(:cpf, :nome, :cargo, :email, :senha, :esta_ativa, :pj_id))
+      session[:page] = "funcionario"
       redirect_to :pj_funcionarios
     end
   end
