@@ -1,9 +1,24 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<div class="ui segment">
     <%= form_for @entrada, url: {action: "create"}, html: {class: "ui form"} do |f| %>
+      <div class="ui field">
       <%= label_tag(:tipo, "Tipo: ") %>
-      <%= f.text_field :tipo %>
+      <select class="ui selection dropdown" id="entrada_tipo" name="entrada[tipo]">
+        <option value="" hidden></option>
+        <option value="adulto">Adulto</option>
+        <option value="infantil">Infantil</option>
+      </select>
+      </div>
+      <div class="ui field">
       <%= label_tag(:data, "Data: ") %>
       <%= f.date_field :data %>
-      <%= f.submit "Cadastrar", class: "ui primary button" %>
+      </div>
+      <div class="ui field">
+      <button class="ui primary button">
+          <i class="ticket icon"></i>
+          Cadastrar Entrada
+        </button>
+      </div>
     <% end %>
 </div>

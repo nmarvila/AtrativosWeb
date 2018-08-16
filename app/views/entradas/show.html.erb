@@ -1,10 +1,23 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<div class="ui segment">
     <form class = "ui form">
+      <div class="ui field">
       <%= label_tag(:tipo, "Tipo: ") %>
-      <%= text_field :tipo, "", value: @entrada.tipo, disabled: true %>
+      <%= text_field :tipo, "", value: @entrada.tipo.capitalize, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:data, "Data: ") %>
       <%= text_field :data, "", value: @entrada.data, disabled: true %>
+      </div>
+      <div class="ui field">
       <%= label_tag(:atrativo, "Vinculado à: ") %>
       <%= text_field :atrativo, "", value: @atrativo.nome, disabled: true %>
+      </div>
+      <div class="ui field">
+        <a href="<%= pj_atrativo_entradas_url(session[:pj_id], session[:atrativo_id]) %>" class="ui blue button">
+          <i class="arrow left icon"></i>
+          Voltar à Listagem</a></td>
+      </div>
     </form>
 </div>

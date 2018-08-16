@@ -1,9 +1,28 @@
-<div class="ui container">
+<%= render "/layouts/menu" %>
+
+<div class="ui segment">
     <%= form_for @entrada, url: {action: "update"}, html: {class: "ui form"} do |f| %>
+      <div class="ui field">
       <%= label_tag(:tipo, "Tipo: ") %>
-      <%= f.text_field :tipo, value: @entrada.tipo %>
+      <select class="ui selection dropdown" id="entrada_tipo" name="entrada[tipo]">
+        <% if @entrada.tipo === "adulto" %>
+        <option value="adulto" selected>Adulto</option>
+        <option value="infantil">Infantil</option>
+        <% elsif @entrada.tipo === "infantil" %>
+        <option value="adulto">Adulto</option>
+        <option value="infantil" selected>Infantil</option>
+        <% end %>
+      </select>
+      </div>
+      <div class="ui field">
       <%= label_tag(:data, "Data: ") %>
       <%= f.date_field :data, value: @entrada.data %>
-      <%= f.submit "Atualizar Cadastro", class: "ui primary button" %>
+      </div>
+      <div class="ui field">
+        <button class="ui orange button">
+          <i class="edit icon"></i>
+          Atualizar Informações
+        </button>
+      </div>
     <% end %>
 </div>
