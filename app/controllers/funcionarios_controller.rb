@@ -3,6 +3,7 @@ class FuncionariosController < ApplicationController
   
   def index
     if session[:user_type] === "pj"
+      session[:atrativo_id] = nil
       session[:page] = "funcionario"
       @pj = Pj.find(params[:pj_id])
       @funcionarios = @pj.funcionarios

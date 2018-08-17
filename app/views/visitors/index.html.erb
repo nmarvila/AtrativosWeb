@@ -12,6 +12,18 @@
   </div>
 <% end %>
 
-<div class="ui segment">
-    <h1>Página inicial</h1>
+<div class="ui centered grid" id="welcome_grid">
+  <div class="row">
+    <h1 class="ui center aligned header">Seja bem-vindo ao sistema Atrativos WEB!</h1>
+  </div>
+  <div class="row">
+    <p>
+      Se você já possui um cadastro, <a href="/login">clique aqui</a> para ser direcionado à página de login.
+    </p>
+  </div>
+  <div class="row">
+    <p>
+      Se ainda não é cadastrado, <a href="<%= new_pj_url %>">clique aqui</a> para ser direcionado à página de cadastro.
+    </p>
+  </div>
 </div>
