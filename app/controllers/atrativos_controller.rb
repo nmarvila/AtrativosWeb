@@ -38,6 +38,7 @@ class AtrativosController < ApplicationController
     else
       flash[:error] = "Você não possui permissão para acessar essa página."
       session[:page] = "home"
+      session[:atrativo_id] = nil
       redirect_to root_url
     end
   end
@@ -57,12 +58,13 @@ class AtrativosController < ApplicationController
 
   def edit
     session[:atrativo_id] = @atrativo.id
-    if session[:user_type] === "pj" && Integer(session[:pj_id]) === Integer(params[:pj_id])
+    if Integer(session[:pj_id]) === Integer(params[:pj_id])
       session[:page] = "atrativo"
       render "edit"
     else
       flash[:error] = "Você não possui permissão para acessar essa página."
       session[:page] = "home"
+      session[:atrativo_id] = nil
       redirect_to root_url
     end
   end
@@ -91,12 +93,12 @@ class AtrativosController < ApplicationController
   end
 
   def destroy
-    if session[:user_type] === "pj"
+    if session[:user_type] === "pj" && Integer(session[:pj_id]) === Integer(params[:pj_id])
       @atrativo.destroy
       
       session[:page] = "atrativo"
       redirect_to :pj_atrativos
-    elsif session[:user_type] === "funcionario"
+    else
       flash[:error] = "Você não possui permissão para acessar essa página."
       session[:page] = "home"
       redirect_to root_url

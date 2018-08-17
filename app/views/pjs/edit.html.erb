@@ -27,7 +27,7 @@
       </div>
       <div class="ui field">
       <%= label_tag(:senha, "Senha: ") %>
-      <%= f.password_field :senha %>
+      <%= f.password_field :senha, required: true %>
       </div>
       <%= f.hidden_field :esta_ativa, value: true %>
       <div class="ui field">

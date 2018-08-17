@@ -6,7 +6,7 @@ class PjsController < ApplicationController
       @pj = Pj.find(session[:user_id])
       session[:page] = ""
       redirect_to @pj
-    elsif session[:user_type] === "funcionario"
+    else
       flash[:error] = "Você não possui permissão para acessar essa página."
       session[:page] = "home"
       redirect_to root_url
@@ -14,17 +14,17 @@ class PjsController < ApplicationController
   end
   
   def show
-    if session[:user_type] === "funcionario"
+    if session[:user_type] === "pj" && Integer(session[:pj_id]) === Integer(params[:id])
+      render "show"
+    else
       flash[:error] = "Você não possui permissão para acessar essa página."
       session[:page] = "home"
       redirect_to root_url
-    else
-      render "show"
     end
   end
 
   def new
-    if session[:user_type] === "funcionario"
+    if session[:user_type] != "nil"
       flash[:error] = "Você não possui permissão para acessar essa página."
       session[:page] = "home"
       redirect_to root_url
@@ -34,12 +34,12 @@ class PjsController < ApplicationController
   end
 
   def edit
-    if session[:user_type] === "funcionario"
+    if session[:user_type] === "pj" && Integer(session[:pj_id]) === Integer(params[:id])
+      render "edit"
+    else
       flash[:error] = "Você não possui permissão para acessar essa página."
       session[:page] = "home"
       redirect_to root_url
-    else
-      render "edit"
     end
   end
 

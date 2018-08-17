@@ -32,6 +32,12 @@
           <i class="arrow left icon"></i>
           Voltar à Listagem</a></td>
       </div>
+      <% else %>
+      <div class="ui field">
+        <a href="<%= edit_pj_funcionario_url(session[:pj_id], @funcionario.id) %>" class="ui orange button">
+          <i class="edit icon"></i>
+          Atualizar Informações</a></td>
+      </div>
       <% end %>
     </form>
 </div>

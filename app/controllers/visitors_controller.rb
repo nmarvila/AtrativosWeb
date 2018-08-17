@@ -44,5 +44,6 @@ class VisitorsController < ApplicationController
     
     def index
         session[:page] = "home"
+        session[:atrativo_id] = nil
     end
 end

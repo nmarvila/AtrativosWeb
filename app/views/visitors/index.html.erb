@@ -16,6 +16,7 @@
   <div class="row">
     <h1 class="ui center aligned header">Seja bem-vindo ao sistema Atrativos WEB!</h1>
   </div>
+  <% if session[:user_id] === nil %>
   <div class="row">
     <p>
       Se você já possui um cadastro, <a href="/login">clique aqui</a> para ser direcionado à página de login.
@@ -26,4 +27,11 @@
       Se ainda não é cadastrado, <a href="<%= new_pj_url %>">clique aqui</a> para ser direcionado à página de cadastro.
     </p>
   </div>
+  <% else %>
+  <div class="row">
+    <p>
+      Utilize o menu acima para navegar pelas funcionalidades da aplicação.
+    </p>
+  </div>
+  <% end %>
 </div>

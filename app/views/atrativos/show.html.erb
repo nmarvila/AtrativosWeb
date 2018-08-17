@@ -5,6 +5,7 @@
       <div class="ui field">
         <img class="ui centered big rounded image" src="<%= @atrativo.imagem %>">
       </div>
+      <div class="ui divider"></div>
       <div class="ui field">
       <%= label_tag(:nome, "Nome: ") %>
       <%= text_field :nome, "", value: @atrativo.nome, disabled: true %>

@@ -8,7 +8,9 @@
                 <th class="center aligned">Nome</th>
                 <th></th>
                 <th></th>
+                <% if session[:user_type] === "pj" %>
                 <th></th>
+                <% end %>
             </tr>
         </thead>
         <tbody>
@@ -23,14 +25,17 @@
                         <a href="<%= edit_pj_atrativo_url(a.pj_id, a.id) %>" class="ui orange button">
                             <i class="edit icon"></i>
                             Editar</a></td>
-                    <%= form_tag pj_atrativo_url(a.pj_id, a.id), method: :delete do %>
-                        <td class="center aligned"><button name="button" type="submit" class="ui red button">
-                            <i class="user times icon"></i>
-                            Excluir</button></td>
+                    <% if session[:user_type] === "pj" %>
+                        <%= form_tag pj_atrativo_url(a.pj_id, a.id), method: :delete do %>
+                            <td class="center aligned"><button name="button" type="submit" class="ui red button">
+                                <i class="user times icon"></i>
+                                Excluir</button></td>
+                        <% end %>
                     <% end %>
                 </tr>
             <% end %>
         </tbody>
+        <% if session[:user_type] === "pj" %>
         <tfoot class="full-width">
             <tr>
                 <th></th>
@@ -43,5 +48,6 @@
               </th>
             </tr>
         </tfoot>
+        <% end %>
     </table>
 </div>
