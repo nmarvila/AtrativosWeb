@@ -11,7 +11,7 @@
     <%= form_for @pj, url: {action: "create"}, html: {class: "ui form"} do |f| %>
       <div class="ui field">
       <%= label_tag(:cnpj, "CNPJ: ") %>
-      <%= f.text_field :cnpj, size: 14, maxlength: 14, required: true %>
+      <%= f.text_field :cnpj, size: 14, maxlength: 14, pattern:"[0-9]{14}", required: true %>
       </div>
       <div class="ui field">
       <%= label_tag(:razao_social, "Razão Social: ") %>

@@ -24,7 +24,7 @@ class PjsController < ApplicationController
   end
 
   def new
-    if session[:user_type] != "nil"
+    if session[:user_type] != nil
       flash[:error] = "Você não possui permissão para acessar essa página."
       session[:page] = "home"
       redirect_to root_url
