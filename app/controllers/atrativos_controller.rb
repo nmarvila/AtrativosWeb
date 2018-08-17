@@ -3,7 +3,7 @@ class AtrativosController < ApplicationController
   
   def index
     session[:atrativo_id] = nil
-    if Integer(session[:pj_id]) === Integer(params[:pj_id])
+    if session[:pj_id] != nil && (Integer(session[:pj_id]) === Integer(params[:pj_id]))
       session[:atrativo_id] = nil
       session[:page] = "atrativo"
       @pj = Pj.find(params[:pj_id])
@@ -17,7 +17,7 @@ class AtrativosController < ApplicationController
 
   def show
     session[:atrativo_id] = @atrativo.id
-    if Integer(session[:pj_id]) === Integer(params[:pj_id])
+    if session[:pj_id] != nil && (Integer(session[:pj_id]) === Integer(params[:pj_id]))
       session[:page] = "atrativo"
       @entradas = @atrativo.entradas
       @total_visitas = 0
@@ -58,7 +58,7 @@ class AtrativosController < ApplicationController
 
   def edit
     session[:atrativo_id] = @atrativo.id
-    if Integer(session[:pj_id]) === Integer(params[:pj_id])
+    if session[:pj_id] != nil && (Integer(session[:pj_id]) === Integer(params[:pj_id]))
       session[:page] = "atrativo"
       render "edit"
     else

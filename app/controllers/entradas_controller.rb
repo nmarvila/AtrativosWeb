@@ -2,7 +2,7 @@ class EntradasController < ApplicationController
   before_action :set_entrada, only: [:show, :edit, :update, :destroy]
   
   def index
-    if Integer(session[:pj_id]) === Integer(params[:pj_id])
+    if session[:pj_id] != nil && (Integer(session[:pj_id]) === Integer(params[:pj_id]))
       session[:page] = "entrada"
       @pj = Pj.find(params[:pj_id])
       @atrativo = @pj.atrativos.find(params[:atrativo_id])
@@ -16,7 +16,7 @@ class EntradasController < ApplicationController
   end
 
   def show
-    if Integer(session[:pj_id]) === Integer(params[:pj_id])
+    if session[:pj_id] != nil && (Integer(session[:pj_id]) === Integer(params[:pj_id]))
       session[:page] = "entrada"
       render "show"
     else
@@ -28,7 +28,7 @@ class EntradasController < ApplicationController
   end
 
   def new
-    if Integer(session[:pj_id]) === Integer(params[:pj_id])
+    if session[:pj_id] != nil && (Integer(session[:pj_id]) === Integer(params[:pj_id]))
       session[:page] = "entrada"
       @pj = Pj.find(params[:pj_id])
       @atrativo = @pj.atrativos.find(params[:atrativo_id])
@@ -42,7 +42,7 @@ class EntradasController < ApplicationController
   end
 
   def edit
-    if Integer(session[:pj_id]) === Integer(params[:pj_id])
+    if session[:pj_id] != nil && (Integer(session[:pj_id]) === Integer(params[:pj_id]))
       session[:page] = "entrada"
       render "edit"
     else
