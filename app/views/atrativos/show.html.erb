@@ -24,19 +24,19 @@
       </div>
       <div class="ui field">
       <%= label_tag(:ingresso_crianca, "Valor do ingresso infantil: ") %>
-      <%= text_field :ingresso_crianca, "", value: @atrativo.ingresso_crianca, disabled: true %>
+      <%= text_field :ingresso_crianca, "", value: "R$ " + number_with_precision(@atrativo.ingresso_crianca, separator: ",", precision: 2), disabled: true %>
       </div>
       <div class="ui field">
       <%= label_tag(:ingresso_adulto, "Valor do ingresso adulto: ") %>
-      <%= text_field :ingresso_adulto, "", value: @atrativo.ingresso_adulto, disabled: true %>
+      <%= text_field :ingresso_adulto, "", value: "R$ " + number_with_precision(@atrativo.ingresso_adulto, separator: ",", precision: 2), disabled: true %>
       </div>
       <div class="ui field">
-      <%= label_tag(:total_visitas, "Total de visitas do mês: ") %>
+      <%= label_tag(:total_visitas, "Total de visitas do mês atual: ") %>
       <%= text_field :total_visitas, "", value: @total_visitas, disabled: true %>
       </div>
       <div class="ui field">
-      <%= label_tag(:total_ingressos, "Valor arrecadado no mês: ") %>
-      <%= text_field :total_ingressos, "", value: @total_ingressos, disabled: true %>
+      <%= label_tag(:total_ingressos, "Valor arrecadado no mês atual: ") %>
+      <%= text_field :total_ingressos, "", value: "R$ " + number_with_precision(@total_ingressos, separator: ",", precision: 2), disabled: true %>
       </div>
       <div class="ui field">
       <%= label_tag(:pj, "Vinculado à: ") %>
