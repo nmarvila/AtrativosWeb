@@ -12,7 +12,7 @@ Versão do PostgreSQL utilizada no desenvolvimento do projeto: <tt>PostgreSQL 9.
 
 Passo-a-passo para efetuar a cópia dos arquivos do projeto:
 
-* Inicie um repositório local no através do comando <tt>git init</tt>
+* Inicie um repositório local através do comando <tt>git init</tt>
 * Utilize o comando <tt>git clone https://github.com/nmarvila/AtrativosWeb.git</tt> para clonar os arquivos do projeto.
 
 Após a cópia dos arquivos do projeto, deve-se criar os bancos de dados para armazenagem das informações do sistema.
