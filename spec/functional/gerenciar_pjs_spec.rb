@@ -8,13 +8,11 @@ feature 'gerenciar PJ' do
   end
   
   scenario 'alterar PJ' do
-    pj = FactoryBot.create(:pj)
-    verificar_edit_pj(pj)
+    verificar_edit_pj
   end
   
-  scenario 'alterar PJ' do
-    pj = FactoryBot.create(:pj)
-    verificar_destroy_pj(pj)
+  scenario 'excluir PJ' do
+    verificar_destroy_pj
   end
   
   def verificar_new_pj
@@ -25,7 +23,7 @@ feature 'gerenciar PJ' do
     expect(page).to have_content 'Efetue o login em sua conta'
   end
   
-  def verificar_edit_pj(pj)
+  def verificar_edit_pj
     visit new_pj_path
     
     preencher
@@ -51,7 +49,7 @@ feature 'gerenciar PJ' do
     expect(page).to have_field('email_', disabled: true, with: "empresaz@empresaz.com")
   end
   
-  def verificar_destroy_pj(pj)
+  def verificar_destroy_pj
     visit new_pj_path
     
     preencher
