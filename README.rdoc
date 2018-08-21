@@ -1,28 +1,38 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Esse repositório tem por objetivo armazenar o código do sistema Atrativos Web, que foi desenvolvido por mim para avaliação
+de meus conhecimentos em Rails como parte de um processo seletivo.
+A seguir serão listados os passos para instalação do projeto.
 
-Things you may want to cover:
+Versão do Ruby utilizada no desenvolvimento do projeto: <tt>ruby 2.3.4p301</tt>
 
-* Ruby version
+Versão do Rails utilizada no desenvolvimento do projeto: <tt>Rails 4.2.5</tt>
 
-* System dependencies
+Versão do PostgreSQL utilizada no desenvolvimento do projeto: <tt>PostgreSQL 9.3.18</tt>
 
-* Configuration
+Passo-a-passo para efetuar a cópia dos arquivos do projeto:
 
-* Database creation
+* Inicie um repositório local no através do comando <tt>git init</tt>
+* Utilize o comando <tt>git clone https://github.com/nmarvila/AtrativosWeb.git</tt> para clonar os arquivos do projeto.
 
-* Database initialization
+Após a cópia dos arquivos do projeto, deve-se criar os bancos de dados para armazenagem das informações do sistema.
 
-* How to run the test suite
+Passo-a-passo para efetuar a criação dos bancos de dados.
 
-* Services (job queues, cache servers, search engines, etc.)
+* Acesse o terminal do PostgreSQL através do comando <tt>psql</tt>
+* Utilize os seguintes comandos para criar os bancos de dados necessários: <tt>create database atrativos_development</tt>,
+<tt>create database atrativos_test</tt> e <tt>create database atrativos_production</tt>.
 
-* Deployment instructions
+Após a criação dos bancos de dados, configure o arquivo <tt>database.yml</tt> de acordo com as suas configurações locais do
+PostgreSQL. O arquivo encontra-se no diretório <tt>config</tt>.
 
-* ...
+Após a configuração do arquivo <tt>database.yml</tt>, acesse o terminal e execute o comando <tt>rake db:migrate</tt> na raiz
+do projeto, para efetuar a configuração das tabelas do banco de dados.
 
+Após a configuração das tabelas, execute o comando <tt>bundle install</tt> para instalar as dependências do projeto.
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Após a instalação das dependências, execute o comando <tt>rails s</tt> na raiz do projeto para inicializar o mesmo. Para
+acessar o projeto, vá ao seu navegador e acesse o endereço <tt>https://localhost:3000</tt>.
+
+Para executar a rotina de testes, vá até a raiz do projeto e execute o comando <tt>bundle exec rspec</tt>. Os arquivos
+dos testes encontram-se no diretório <tt>spec/functional</tt>.
