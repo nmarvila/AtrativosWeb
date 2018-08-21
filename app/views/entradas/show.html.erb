@@ -8,7 +8,7 @@
       </div>
       <div class="ui field">
       <%= label_tag(:data, "Data: ") %>
-      <%= text_field :data, "", value: @entrada.data, disabled: true %>
+      <%= text_field :data, "", value: @entrada.data.strftime("%d/%m/%Y"), disabled: true %>
       </div>
       <div class="ui field">
       <%= label_tag(:atrativo, "Vinculado à: ") %>
